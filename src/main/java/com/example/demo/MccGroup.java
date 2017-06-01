@@ -7,25 +7,20 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import net.homecredit.mer.web.core.AbstractEntity;
 
 import lombok.Getter;
-import lombok.ToString;
+import org.springframework.hateoas.Identifiable;
 
-/**
- * Created by Patrik.Mihalcin on 24.5.2017.
- */
-@ToString(callSuper = true, exclude = {"codes"})
 @Getter
-@Table(name = "MER_MCC_GROUP")
 @Entity
-@SequenceGenerator(name = "SEQ", sequenceName = "SQ_MER_MCC_GROUP", allocationSize = 1)
-class MccGroup extends AbstractEntity {
+class MccGroup implements Identifiable<Long> {
 
+    @Id
+    @GeneratedValue
+    private Long id;
     private final String name;
 
     @OneToMany(mappedBy = "mcc", cascade = ALL, orphanRemoval = true)
@@ -33,12 +28,15 @@ class MccGroup extends AbstractEntity {
 
     MccGroup() {
         this.name = null;
-        this.codes = new LinkedList<>();
-
     }
 
     MccGroup(String name) {
         this.name = name;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
     }
 
     @Override

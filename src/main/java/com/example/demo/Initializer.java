@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-class MerchantInitializer {
+class Initializer {
 
     private final MccGroupRepository mccGroups;
     private final MccRepository codes;
@@ -24,14 +24,14 @@ class MerchantInitializer {
             return;
         }
 
-        MccGroup mccGroup1 = new MccGroup("Agricultural Services");
-        MccGroup mccGroup2 = new MccGroup("Contracted Services");
+        MccGroup mccGroup1 = new MccGroup("Group 1");
+        MccGroup mccGroup2 = new MccGroup("Group 2");
         mccGroups.save(Arrays.asList(mccGroup1, mccGroup2));
 
-        Mcc mcc1 = new Mcc("0001", "TAP(Portugal)");
-        Mcc mcc2 = new Mcc("0002", "ANSA International");
-        Mcc mcc3 = new Mcc("1500", "Spanair: Sales On Board");
-        Mcc mcc4 = new Mcc("1501", "Iberia: Sales On Board");
+        Mcc mcc1 = new Mcc("0001", "mcc 1");
+        Mcc mcc2 = new Mcc("0002", "mcc 2");
+        Mcc mcc3 = new Mcc("1500", "mcc 50");
+        Mcc mcc4 = new Mcc("1501", "mcc 51");
 
         codes.save(Arrays.asList(mcc1, mcc2, mcc3, mcc4));
 

@@ -10,23 +10,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import net.homecredit.mer.web.core.AbstractEntity;
 
 import lombok.Getter;
-import lombok.ToString;
+import org.springframework.hateoas.Identifiable;
 
-/**
- * Created by patrik.mihalcin on 3.4.2017.
- */
-@ToString(callSuper = true, exclude = {"groups"})
 @Getter
-@Table(name = "MER_MCC")
 @Entity
-@SequenceGenerator(name = "SEQ", sequenceName = "SQ_MER_MCC", allocationSize = 1)
-public class Mcc extends AbstractEntity {
+public class Mcc implements Identifiable<String> {
 
     @Id
     private String code;
@@ -51,13 +41,18 @@ public class Mcc extends AbstractEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Mcc mcc = (Mcc) o;
-        return Objects.equals(code, mcc.code);
+        MccGroupMcc that = (MccGroupMcc) o;
+
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), code);
+        return 31;
+    }
+
+    @Override
+    public String getId() {
+        return code;
     }
 }

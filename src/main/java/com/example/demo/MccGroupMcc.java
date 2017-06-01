@@ -10,17 +10,12 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.Table;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * Created by patrik.mihalcin on 26.5.2017.
- */
 @Getter
-@Table(name = "MER_MCC_GROUP_MCC")
 @Entity
 public class MccGroupMcc {
 

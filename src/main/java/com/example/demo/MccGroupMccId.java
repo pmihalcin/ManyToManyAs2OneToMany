@@ -7,20 +7,17 @@ import javax.persistence.Embeddable;
 
 import lombok.Getter;
 
-/**
- * Created by patrik.mihalcin on 26.5.2017.
- */
 @Getter
 @Embeddable
 class MccGroupMccId implements Serializable {
 
     private Long mccGroupId;
-    private Long mccId;
+    private String mccId;
 
     MccGroupMccId() {
     }
 
-    MccGroupMccId(Long mccGroupId, Long mccId) {
+    MccGroupMccId(Long mccGroupId, String mccId) {
         this.mccGroupId = mccGroupId;
         this.mccId = mccId;
     }
